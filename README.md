@@ -7,13 +7,13 @@ Start the HDFS services and YARN services with the following commands:
 
 `start-yarn.sh`
 
-![Alt Text](mapReduce/start-dfs-yarn.png)
+![Alt Text](mapreduce/start-dfs-yarn.png)
 
 ## Check if the services have been started
 
 `jps`
 
-![Alt Text](TP1-TP2/jps.png)
+![Alt Text](mapreduce/jps.png)
 
 ## Executing a Hadoop MapReduce job
 
@@ -51,7 +51,7 @@ This opens the "ventes.txt" file in the nano text editor, allowing you to edit i
 
 `nano ventes.txt`
 
-![Alt Text](mapReduce/ventesTxt.PNG)
+![Alt Text](mapreduce/ventesTxt.PNG)
 
 This command uploads the local "ventes.txt" file to the root directory of the Hadoop Distributed File System (HDFS).
 
@@ -59,7 +59,7 @@ This command uploads the local "ventes.txt" file to the root directory of the Ha
 
 We gonna do the same thing with logs.txt 
 
-![Alt Text](mapReduce/mogsTxt.PNG)
+![Alt Text](mapreduce/logsTxt.PNG)
 
 ## Extracts the city from a given input text line and emits a key-value pair of the city and a constant value of one
 
@@ -74,7 +74,7 @@ We gonna do the same thing with logs.txt
         }
     }
 ```
-![Alt Text](mapReduce/total_sales_by_city.PNG)
+![Alt Text](mapreduce/total_sales_by_city.PNG)
 
 ## Calculate the total sales price of products per city
 ```java
@@ -96,7 +96,7 @@ private int targetYear = 2021;
     }
 ```
 
-![Alt Text](mapReduce/TotalSalesByCity_YearXXXX.PNG)
+![Alt Text](mapreduce/TotalSalesByCity_YearXXXX.PNG)
 
 ## find the total number of requests by IP address 
 ```java
@@ -111,7 +111,7 @@ private static final IntWritable ONE = new IntWritable(1);
     }
 ```
 
-![Alt Text](mapReduce/totalRequest.PNG)
+![Alt Text](mapreduce/totalRequest.PNG)
 
 ## Determine the number of successful requests (with HTTP response code 200) by IP address
 ```java
@@ -128,4 +128,4 @@ private static final IntWritable ONE = new IntWritable(1);
     }
 ```
 
-![Alt Text](mapReduce/SuccessIp.PNG)
+![Alt Text](mapreduce/SuccessIp.PNG)
