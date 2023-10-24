@@ -1,5 +1,68 @@
 # TP2-Map-Reduce
 
+## Start HDFS service and YARN service
+Start the HDFS services and YARN services with the following commands:
+
+`start-dfs.sh`
+
+`start-yarn.sh`
+
+![Alt Text](TP1-TP2/start-dfs-yarn.PNG)
+
+## Check if the services have been started
+
+`jps`
+
+![Alt Text](TP1-TP2/jps.PNG)
+
+## Executing a Hadoop MapReduce job
+
+To initiate the processing task using our MapReduce framework,  execute the command provided below:
+
+`  hadoop jar $JAR_FILE $MAIN_CLASS $INPUT_PATH $OUTPUT_PATH  `
+
+## Reducer Class 
+```java
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import java.io.IOException;
+
+
+public class WordCountReducer extends Reducer<Text , IntWritable , Text , IntWritable >{
+    @Override
+    protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+        int sum = 0;
+        for (IntWritable val : values) {
+            sum += val.get();
+        }
+        context.write(key, new IntWritable(sum));
+    }
+}
+
+```
+## Commands for File Creation, Editing, and HDFS Uploading"
+
+This command creates an empty file named "ventes.txt" if it doesn't already exist
+
+`touch ventes.txt` 
+
+This opens the "ventes.txt" file in the nano text editor, allowing you to edit its contents.
+
+`nano ventes.txt`
+
+![Alt Text](TP1-TP2/web.PNG)
+
+This command uploads the local "ventes.txt" file to the root directory of the Hadoop Distributed File System (HDFS).
+
+`hdfs dfs -put ventes.txt /`
+
+We gonna do the same thing with logs.txt 
+
+![Alt Text](TP1-TP2/web.PNG)
+
+## Extracts the city from a given input text line and emits a key-value pair of the city and a constant value of one
+
 ```java
  private static final IntWritable ONE = new IntWritable(1);
     @Override
@@ -11,7 +74,9 @@
         }
     }
 ```
+![Alt Text](TP1-TP2/web.PNG)
 
+## Calculate the total sales price of products per city
 ```java
 private int targetYear = 2021;
     @Override
@@ -31,6 +96,9 @@ private int targetYear = 2021;
     }
 ```
 
+![Alt Text](TP1-TP2/web.PNG)
+
+## find the total number of requests by IP address 
 ```java
 private static final IntWritable ONE = new IntWritable(1);
  @Override
@@ -43,6 +111,9 @@ private static final IntWritable ONE = new IntWritable(1);
     }
 ```
 
+![Alt Text](TP1-TP2/web.PNG)
+
+## Determine the number of successful requests (with HTTP response code 200) by IP address
 ```java
 @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -56,3 +127,5 @@ private static final IntWritable ONE = new IntWritable(1);
         }
     }
 ```
+
+![Alt Text](TP1-TP2/web.PNG)
